@@ -4,6 +4,11 @@ interface IonServerAdded {
   serverName: string;
   serverContent: string;
 }
+interface IServerElements {
+  type: string;
+  name: string;
+  content: string;
+}
 
 @Component({
   selector: "app-root",
@@ -11,7 +16,7 @@ interface IonServerAdded {
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  serverElements = [
+  serverElements: Array<IServerElements> = [
     {
       type: "server",
       name: "Test server",
@@ -19,7 +24,7 @@ export class AppComponent {
     },
   ];
 
-  onServerAdded(serverData: IonServerAdded) {
+  onServerAdded(serverData: IonServerAdded): void {
     this.serverElements.push({
       type: "server",
       name: serverData.serverName,
@@ -27,11 +32,15 @@ export class AppComponent {
     });
   }
 
-  onBlueprintAdded(serverData: IonServerAdded) {
+  onBlueprintAdded(serverData: IonServerAdded): void {
     this.serverElements.push({
       type: "blueprint",
       name: serverData.serverName,
       content: serverData.serverContent,
     });
+  }
+
+  onChangeFirst(): void {
+    this.serverElements[0].name = "Changed !";
   }
 }
