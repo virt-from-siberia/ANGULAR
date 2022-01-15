@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
 import {AuthModule} from 'src/app/auth/auth.module'
 import {environment} from 'src/environments/environment'
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import {environment} from 'src/environments/environment'
       maxAge: 25,
       logOnly: environment.production,
     }),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
