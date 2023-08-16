@@ -1,29 +1,40 @@
 <h1>Hello Angular World!</h1>
 
-<!--<p>{{ title }}</p>-->
 
-<!--<p><strong>{{number - 2}}</strong></p>-->
-<!--<p><strong>{{arr}}</strong></p>-->
-<!--<p><strong>{{obj.b.c}}</strong></p>-->
-
-<!--<p><strong>{{ 40 + 2 }}</strong></p>-->
-<!--<p><strong>{{ 'Hello' + ' World' }}</strong></p>-->
-
-<button (click)="onClick()">Click me!</button>
+<button (click)="toggle = !toggle">Toggle</button>
+<button (click)="toggle = 111">set default</button>
 
 
-<input
-  type="text"
-  (keyup.enter)="onInput($event)"
-  (blur)="onBlur(myInput.value)"
-  #myInput
->
-<p><strong>{{inputValue}}</strong></p>
+<div [ngSwitch]="toggle">
+  <p *ngSwitchCase="true" class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, illum.</p>
+  <p *ngSwitchCase="false" class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, illum.</p>
+  <p *ngSwitchDefault>default</p>
 
-<hr>
-<app-post></app-post>
-<!--<app-post></app-post>-->
 
-<hr>
+  <ul>
+    <li *ngFor="let number of arr; let idx = index">{{idx}}<strong>{{number}}</strong></li>
+  </ul>
 
-<app-post4></app-post4>
+  <ul style="list-style: none">
+    <li *ngFor="let post of objs">
+      <p>{{post.title}} <b>{{post.author}}</b></p>
+      <ul>
+        <li *ngFor="let comment of post.comments">
+          <p><small>{{comment.name}}:</small></p>
+          <p>{{comment.text}}</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<p>{{now | date | lowercase}}</p>
+
+
+
+
+
+
+
+
+

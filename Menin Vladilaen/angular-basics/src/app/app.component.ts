@@ -8,26 +8,31 @@ import {Component} from '@angular/core';
 
 export class AppComponent {
 
-  title = 'dynamic title';
-  number = 42;
-  arr = [1, 2, 3];
-  obj = {a: 1, c: 2}
-  inputValue = ''
+  title = 'initial'
+  toggle: any = false
+  arr = [3, 5, 8, 12]
+  objs = [
+    {
+      title: 'Post 1', author: 'Aleksey', comments: [
+        {name: 'Max', text: 'lorem'},
+        {name: 'Ivan', text: 'lorem 2'},
+        {name: 'Tatyana', text: 'lorem 3'},
+      ]
+    },
+    {
+      title: 'Post 2', author: 'Lena', comments: [
+        {name: 'Max', text: 'lorem'},
+        {name: 'Ivan', text: 'lorem 2'},
+        {name: 'Tatyana', text: 'lorem 3'},
+      ]
+    }
+  ]
 
-
-  constructor() {
-  }
+  now = new Date()
 
   onInput(event: any) {
-    this.inputValue = (<HTMLInputElement>event.target).value
+    this.title = event.target.value
   }
 
-  onBlur(str: string) {
-    this.inputValue = str
-  }
-
-  onClick() {
-    console.log('Click!')
-  }
 
 }
